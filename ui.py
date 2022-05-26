@@ -1,4 +1,5 @@
 import os.path
+import sys
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
@@ -9,6 +10,14 @@ from process import PROCESS
 
 root = tk.Tk()
 root.title('Positive Pay - File Converter')
+
+try:
+    ico_path = os.path.dirname(sys.argv[0])
+    ico_path = ico_path + os.path.sep + 'positive-pay-color.ico'
+    root.iconbitmap(ico_path)
+except:
+    pass
+
 root.resizable(True, True)
 root.geometry('575x250')
 
@@ -18,7 +27,7 @@ account_no = ''
 
 
 def row_y(row):
-    return ((row-1) * 33) + 10
+    return ((row - 1) * 33) + 10
 
 
 def select_input_file():
@@ -91,6 +100,7 @@ def save_inputs():
     r.save_str(key='account_no', value=account_no)
     return
 
+
 def load_inputs():
     global inp_file_name
     global out_file_name
@@ -101,6 +111,7 @@ def load_inputs():
     out_file_name = r.load_str(key='Output_File_Name')
     account_no = r.load_str(key='account_no')
     return
+
 
 load_inputs()
 
@@ -148,6 +159,7 @@ save_btn.place(x=10, y=row_y(6), height=22)
 process_btn = ttk.Button(root, text="Process", command=process_file)
 process_btn.place(x=450, y=row_y(6), height=22)
 
+
 #
 # Setup window resize event, so we can keep buttons near lower edge of
 # application window.
@@ -164,6 +176,7 @@ def root_event(event):
         xval = 10
         yval = event.height - (event.height / 20) - save_btn.winfo_height()
         save_btn.place(x=xval, y=yval)
+
 
 root.bind('<Configure>', root_event)
 

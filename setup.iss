@@ -2,10 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Positive Pay Converter"
-#define MyAppVersion "2.0"
+#define MyAppVersion "2.1"
 #define MyAppPublisher "WWD"
 #define MyAppURL "https://wwd.ca.gov"
 #define MyAppExeName "ui.exe"
+#define MyAppICO "positive-pay-color.ico"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -23,8 +24,8 @@ DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 ; PrivilegesRequired=lowest
 OutputDir=C:\projects\positive-pay
-OutputBaseFilename=ppcSetup
-SetupIconFile=C:\projects\positive-pay\graphics\positive-pay.ico
+OutputBaseFilename=Setup
+SetupIconFile=C:\projects\positive-pay\graphics\positive-pay-color.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -37,11 +38,12 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\projects\positive-pay\output\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\positive-pay\graphics\{#MyAppICO}"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\{#MyAppICO}"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\{#MyAppICO}"
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
