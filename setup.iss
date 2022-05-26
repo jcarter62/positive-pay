@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Positive Pay Converter"
-#define MyAppVersion "2.1"
+#define MyAppVersion "2.2"
 #define MyAppPublisher "WWD"
 #define MyAppURL "https://wwd.ca.gov"
 #define MyAppExeName "ui.exe"
